@@ -1,0 +1,123 @@
+.Root {
+	width: 100%;
+	margin: 0px;
+}
+
+.HeaderPanel {
+	margin: 0px;
+	padding: 10px;
+	width: 100%;
+	height: 60px;
+	background-color: #FFC107;
+	position: fixed;
+}
+
+.HeaderPanelText {
+	color: white;
+	vertical-align: middle;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 150%;
+	margin: 5px;
+}
+
+.BodyPanel {
+	padding-top: 60px;
+	width: 100%;
+	height: 100vh;
+	margin: 0px;
+}
+
+.ContentPanel {
+	background-color: #F5F5F5;
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+}
+
+.TopicPanel {
+	background-color: #E0E0E0;
+	height: 100%;
+	width: 20vw;
+	margin: 0px;
+}
+
+.TopicButton {
+	display: inline-block;
+	height: auto;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	background-color: transparent;
+	padding: 10px;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	color: #34495e;
+	text-align: left;
+	
+	box-shadow: 0px;
+	border-style: none;
+	outline-style: none;
+}
+
+.TopicButtonSelected {
+	display: inline-block;
+	height: auto;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	background-color: #7f8c8d;
+	padding: 10px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	color: black;
+	text-align: left;
+	
+	box-shadow: 0px;
+	border-style: none;
+	outline-style: none;
+}
+
+.TopicButton:hover {
+	transition-duration: 0.2s;
+	background-color: #bdc3c7;
+	transition-timing-function: ease-in-out;
+}
+
+.TopicButton:active {
+	transition-duration: 0.2s;
+	background-color: #7f8c8d;
+	transition-timing-function: ease-in-out;
+	font-size: 14px;
+}
+
+.TextPanel {
+	background-color: #F5F5F5;
+	height: 100%;
+	width: 70vw;
+	margin: 0px;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-bottom: 10px;
+}
+
+.ContentFrame {
+	width: 105%;
+	height: 100%;
+	border-style: none;
+	animation-name: ContentFrameKeyFrame;
+	animation-duration: 0.7s;
+}
+
+@keyframes ContentFrameKeyFrame {
+	from {opacity: 0.0;}
+	to {opacity: 1.0;}
+}
