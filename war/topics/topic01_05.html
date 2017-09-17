@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="topics.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+
+	<body>
+		<div class="TitleText">
+			Going Interactive
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			5.1 Scanner
+		</div>
+		<div class="ContentText">
+			Without user interaction, the program is boring. In this section, I will be introducing the Scanner class. It allows the user to input value.
+			<br><br>
+			<pre><code class="Java">package HelloWorld;
+
+import java.util.Scanner; //We need to import this library to enable the function.
+
+public class HelloWorld {
+	
+	public static void main (String [] args) {
+		Scanner sc = new Scanner(System.in); //feeds the system input into scanner.
+		System.out.print("Please input anything : "); /* println adds a new line, while print doesn't.
+							      you can experiment by changing it to println
+							      and see what happens.*/
+		String input = sc.nextLine(); /* wait for the user to input anything and press enter.
+					    The user input will be saved into the variable input. */
+		System.out.println("You just entered this : " + input); // display the value stored in input
+	}
+}</code></pre>
+			Sometimes if we need to convert the String to int or double to perform mathematical operation, we need to use Integer.parseInt( value )  or Double.parseDouble( value ) to convert, where the value should be a String value or String variable.
+			<pre><code class="Java">//Case1
+int a=Integer.parseInt("1") //convert 1 into int and assign to a
+
+//Case 2
+String lol="123.5"
+double b=Double.parseDouble(lol) //convert lol into int and assign to b
+			</code></pre>
+			Exercise :
+			Or if you decided to be naughty, you can do this to confuse others :
+			<pre><code class="Java">public static void main (String [] args) {
+	int five = 1;
+	int eight = 3;
+	System.out.println( five + eight );
+}</code></pre>
+		</div>
+		<br><hr><br>
+		<div class="SubtitleText">
+			Exercise
+		</div>
+		<div class="ContentText">
+		<ul>
+			<li>Write a program that accepts 2 numbers from the user and displays the sum of the entered numbers. It should look like this :
+			<pre><code>Please enter the first number : 56
+Please enter the second number : 89
+The answer is 145.</code></pre></li>
+			<li>Write a program that accepts 3 numbers from the user and displays the answer after performing the calculation : x + y % z. It should look like this :
+			<pre><code>Please enter value of x : 123
+Please enter value for y : 5869
+Please enter value for z : 12
+The answer is 124.</code></pre></li>
+		</ul>
+		</div>
+	</body>
+</html>

@@ -62,6 +62,8 @@
 	box-shadow: 0px;
 	border-style: none;
 	outline-style: none;
+
+	animation: ContentFrameKeyFrame 0.3s;
 }
 
 .TopicButtonSelected {
@@ -73,12 +75,35 @@
 	cursor: pointer;
 	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
+
 	background-color: #7f8c8d;
 	padding: 10px;
 	
 	font-family: 'Roboto', sans-serif;
 	font-size: 15px;
 	color: black;
+	text-align: left;
+	
+	box-shadow: 0px;
+	border-style: none;
+	outline-style: none;
+}
+
+.TopicButtonFrozen {
+	display: inline-block;
+	height: auto;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	background-color: #FFE082;
+	padding: 10px;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	color: #34495e;
 	text-align: left;
 	
 	box-shadow: 0px;

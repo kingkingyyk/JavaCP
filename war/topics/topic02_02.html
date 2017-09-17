@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="topics.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+
+	<body>
+		<div class="TitleText">
+			Memoization
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			2.1 Real World Problem
+		</div>
+		<div class="ContentText">
+			Now, let's solve Project Euler No. 14! If we use the iterative or recursive approach, the program will run forever as the problem is too large. The key to solve this is memoization.
+			<br><br>
+			The concept is to store the result of subproblems so that we can use it in larger problem without recalculating again. It is the foundation of dynamic programming, but at this stage, we shall just have some brief discussions.
+			<br><br>
+			Now, take a look if we put n = 8, the chain would be :
+			<ul>
+				<li>First loop :  1</li>
+				<li>Second loop : 2 -> 1</li>
+				<li>Third loop : 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1</li>
+				<li>Forth loop : 4 -> 2 -> 1<br>....</li>
+				<li>Eighth loop : 8 -> 4 -> 2 -> 1</li>
+			</ul>
+			There are so many repetition of 2 -> 1, 4 -> 2 -> 1, 8 -> 4 -> 2 -> 1, isn't that we are wasting processing cycle to calculate the chain count that we have calculated earlier? 
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			2.2 Data Storage Model
+		</div>
+		<div class="ContentText">
+			Now, we need to think of a way to store the data. Since our subject is naive number, we can happily apply that in array index, directly. Now, I'll introduce the version with memoization.
+			<pre><code class="Java">public class euler {
+	
+	public static int [] dp=new int [1000001]; //store the chain count...
+	
+	public static void main (String [] abc) {
+		int maxStartingNum=0;
+		long maxChain=0;
+		dp[1]=1; // f(1) = 1
+		for (int i=1;i&#60;10000001;i++) { //1 - 1 million
+			long number=i;
+			int currChain=1;
+			while (true) {
+				if (number<=1000000 && dp[(int)number]!=0) {
+					//number less than the startingnumber can be store,
+					//so we check whether we can reuse back the previous
+					//calculated chain count or not.
+					currChain+=dp[(int)number];
+					//reuse!
+					break;
+				}
+				if (number%2==0) {
+					number=number/2;
+				} else {
+					number=3*number+1;
+				}
+				currChain++;
+			}
+			dp[i]=currChain;
+			if (currChain>maxChain) {
+				maxChain=currChain;
+				maxStartingNum=i;
+			}
+		}
+		System.out.println(maxStartingNum);
+	}
+}</code></pre>
+			Run it, your computer will give the result directly.
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			2.3 What is really happening?
+		</div>
+		<div class="ContentText">
+			On every new problem (number) we encountered, we get the chain count from the problem(number) we solved earlier.
+			<ul>
+				<li>First loop :  1, loop count = 1</li>
+				<li>Second loop : 2 -> (Already solved in first loop), loop count = 2<br>Solved : 1, 2</li>
+				<li>Third loop : 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> (Already solved in second loop), loop count = 7<br>Solved : 1, 2, 3, 4, 5, 8, 10, 16</li>
+				<li>Forth loop : (Already solved in third loop), loop count = 1<br>Solved : 1, 2, 3, 4, 5, 8, 10, 16</li>
+				<li>Eighth loop : (Already solved in third loop), loop count = 1<br>Solved : 1, 2, 3, 4, 5, 8, 10, 16</li>
+			</ul>
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			2.4 Flavours
+		</div>
+		<div class="ContentText">
+			There are two ways to implement memoization; <b>bottom-up</b> and <b>top-down</b>. The one I have demonstrated is bottom-up, which is to build the solution table from subproblems. Top-down is commonly used with recursion. 
+			<br>
+			<br>
+			Top-down is more straight-forward and easier to implement. It also run faster than bottom-up as potentially there are some subproblems not needed in computing the final solution.
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			Exercise
+		</div>
+		<div class="ContentText">
+			Use top-down + recursion to solve the problem above.
+		</div>
+	</body>
+</html>
