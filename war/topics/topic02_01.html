@@ -12,116 +12,130 @@
 
 	<body>
 		<div class="TitleText">
-			Recursion
+			Why Object?
 		</div>
 		<hr><br>
 		<div class="SubtitleText">
 			1.1 Real World Problem
 		</div>
 		<div class="ContentText">
-			Let's solve this question.
-			<br><br>
-			<i>Modified from Project Euler No. 14</i>
-			<br>
-			The following iterative sequence is defined for the set of positive integers:
-			<br>
-			<p>\[n → n/2 \: (n \: is \: even)\]\[n → 3n + 1 \: (n \: is \: odd)\]</p>
-			Using the rule above and starting with 13, we generate the following sequence:
-			<br><br>
-			<center>13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</center>
-			<br>
-			It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
-			<br><br>
-			Which starting number, under one hundred, produces the longest chain?
-			<br><br>
-			NOTE: Once the chain starts the terms are allowed to go above one million. [Answer : 97]
-			<br><br>
-			I would expect you to do something like this :
-			<pre><code class="Java">public static int getChainCount (long n) {
-	int chainCount=1; //the number itself
-	while (n!=1) { //ends at 1
-		chainCount++;
-		if (n%2==0) { //n is even
-			n=n/2;
-		} else { //n is odd
-			n=3*n+1;
-		}
+			Given this list of students, find the student id that has the highest score. (If more than one, list all of them.) The first line of input is the number of students, followed by lines of student and the score.
+			<pre><code class="Java">47
+Nadira	83
+Sinclair	14
+Philis	81
+Ilona	6
+Pascual	76
+Benesh	77
+Mysie	100
+Erebus	17
+Kostyantyn	96
+Susana	87
+Hibiki	77
+Burkhard	24
+Uduak	52
+Femke	1
+Lysistrate	68
+Emma	9
+Shmuel	15
+Nicolina	74
+Ennio	87
+Eadwig	29
+Albertine	42
+Grozda	17
+Cassandra	54
+Marianus	59
+Svanhildr	99
+Ocean	59
+Magnus	39
+Polykarpos	67
+Gemaryahu	31
+Erika	93
+Pio	1
+Cassandra	90
+Sundara	90
+Placid	50
+Columbanus	38
+Cruz	79
+Ade	26
+Rostam	6
+Atanasij	99
+Teresa	43
+Sherri	75
+Feodosiy	29
+Carmina	51
+Theotman	99
+Nanette	1
+Walerian	60
+Brutus	54
+</code></pre>
+		Without having the knowledge of object oriented programming, you will do this :
+		<pre><code class="Java">public static void main (String [] args) throws Exception {
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	int n=Integer.parseInt(br.readLine());
+	String [] name=new String[n];
+	int [] score=new int [n];
+	for (int i=0;i&#60;n;i++) {
+		StringTokenizer st=new StringTokenizer(br.readLine());
+		name[i]=st.nextToken();
+		score[i]=Integer.parseInt(st.nextToken());
 	}
-	return chainCount;
-}
+	int maxScore=score[0];
+	for (int i=1;i&#60;n;i++) if (score[i]>maxScore) maxScore=score[i]; //We get the highest score.
 	
-public static void main (String [] args) {
-	int longestChain=1;
-	for (int i=1;i&#60;100;i++) {
-		int chainCount=getChainCount(i);
-		if (chainCount>=longestChain) {
-			longestChain=chainCount;
-			startingNumWithLongestChain=i;
-			//set the variable to largest number if exist.
-		}
-	}
-	System.out.println(longestChain);
-}</code></pre>
+	for (int i=1;i&#60;n;i++) if (score[i]==maxScore) System.out.println(name[i]);
+	//Search for row that has the highest score and print.
+}
+		</code></pre>
 		</div>
 		<br><hr><br>
 		<div class="SubtitleText">
-			1.2 The Recursion
+			1.2 The Analogy
 		</div>
 		<div class="ContentText">
-			Recursion is the a way of writing the code such that it calls itself. In our context, we can change the method to call itself. It is composed by the following elements :
-			<ul>
-				<li>Calling the originating method itself directly, or indirectly.</li>
-				<li>Stopping condition</li>
-			</ul>
-			This is the opposite of of iterative (loop). The performance is worse than iterative, due to extra processing time needed to handle the method calling internally. However, in problems that are naturally recursive, like the problem we did earlier, recursive method can help us to solve it with less line of code than iterative way.
-			<pre><code class="Java">public static int getChainCount (long n) {
-	if (n==1) return 1; //Stop calling itself recursively.
-	else
-	 	//Expects the next recursive method to stop for us.
-		if (n%2==0) return getChainCount(n/2)+1;
-		else return getChainCount(3*n+1)+1;
-	}
-}
-	
-public static void main (String [] args) {
-	int longestChain=1;
-	for (int i=1;i&#60;100;i++) {
-		int chainCount=getChainCount(i);
-		if (chainCount>=longestChain) {
-			longestChain=chainCount;
-			startingNumWithLongestChain=i;
-			//set the variable to largest number if exist.
-		}
-	}
-	System.out.println(longestChain);
+			Did you notice that we use the index of the score to refer to the name? This is the idea of object. Object wraps the data for us by providing an ID that is generated implicitly by Java VM. Previously we used array to store the data and the array index as our ID. Now let's see how we use Object to achieve the same thing.
+			<br><br>
+			First, right click on your package, then New... > Class. Put <b>Student</b> in the name field, then press <b>Finish</b>. Eclipse will open up Student.java for you with the following content :
+			<pre><code class="Java">package myproject; //depending on your package name.
+public class Student {
 }
 </code></pre>
+			Next, add a name variable and a score variable into the class. It should look like this :
+			<pre><code class="Java">package myproject; //depending on your package name.
+public class Student {
+	public String name;
+	public int score;
+}
+</code></pre>
+			The name and score is identical to the array, but with object, the way of access is different. We also need to instantiate the ID. The variable here is also called as instance variable (as it differs from instance of object/ID to another) or attribute.
 		</div>
 		<br><hr><br>
 		<div class="SubtitleText">
-			1.3 Fibonacci Number
+			1.3 The Improved Version
 		</div>
 		<div class="ContentText">
-			Fibonacci Number is defined as follow :
-			<p>\[f(n) = f(n-2) + f(n-1)\]</p>
-			The first & (zeroth) Fibonacci number are 1. Now, write a program that displays the 30<sup>th</sup> Fibonacci Number. With loop, you could have done this:
-			<pre><code class="Java">public static int getFn(int n) {
-	int fNMinus1=1;
-	int fNMinus2=1;
-	int fN=2;
-	for (int i=2;i&#60;30;i++) {
-		fNMinus2=fNMinus1;
-		fNMinus1=fN;
-		fN=fNMinus1+fNMinus2;
+			Go back to our main class previously. This is the example on how to use Object.
+		<pre><code class="Java">public static void main (String [] args) throws Exception {
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	int n=Integer.parseInt(br.readLine());
+	Student [] std=new Student[n]; //Create an Student object array
+	for (int i=0;i&#60;n;i++) {
+		StringTokenizer st=new StringTokenizer(br.readLine());
+		Student s=new Student(); //Instantiate an Student object.
+		std[i]=s; //Put the object into array.
+		s.name=st.nextToken(); //Set the student.name to input name.
+		s.score=Integer.parseInt(st.nextToken()); //Do the same on score
 	}
-	return fN;
-}</code></pre>
-			But with recursion, you can do it like this:
-			<pre><code class="Java">public static int getFn(int n) {
-	if (n<=1) return 1; //Stop calling itself recursively
-	else return getFn(n-1)+getFn(n-2);
-}</code></pre>
-			Isn't that look way better than the iterative approach? :)
+	int maxScore=std[0].score
+	for (int i=1;i&#60;n;i++) if (std[i].score>maxScore) maxScore=std[i].score; //We get the highest score.
+	
+	for (int i=1;i&#60;n;i++) if (std[i].score==maxScore) System.out.println(std[i].name);
+	//Search for row that has the highest score and print.
+}
+		</code></pre>
+			The advantage of using object is that the attributes always follow the object. When dealing with swapping of values in an array, we always need to make sure all of the related array also perform the same swap. But with object, single swap of object can achieve the same thing with less code!
+			<br><br>
+			Don't believe? Refer to the input data, swap position of Emma with Brutus.
 		</div>
 	</body>
 </html>

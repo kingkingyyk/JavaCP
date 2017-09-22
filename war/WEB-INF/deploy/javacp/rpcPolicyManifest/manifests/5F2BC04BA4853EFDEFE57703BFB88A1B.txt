@@ -1,0 +1,2 @@
+serviceClass: com.kingkingyyk.javacp.client.GreetingService
+path: 4A8D29083B45642EFFAA5596D2E6A707.gwt.rpc

@@ -69,7 +69,7 @@ public class JavaCP implements EntryPoint {
 	}
 	
 	public void initializeTopics() {
-		BigTopic bt=new BigTopic("Java Programming - 1");
+		BigTopic bt=new BigTopic("Java Programming");
 		BigTopicList.add(bt);
 		bt.addTopic(new Topic("Section 1 - Introduction","/topics/topic01_01.html"));
 		bt.addTopic(new Topic("Section 2 - Hello World, again","/topics/topic01_02.html"));
@@ -84,13 +84,19 @@ public class JavaCP implements EntryPoint {
 		bt.addTopic(new Topic("Section 11 - Methods & Functions","/topics/topic01_11.html"));
 		bt.addTopic(new Topic("Section 12 - Variable Scoping","/topics/topic01_12.html"));
 		bt.addTopic(new Topic("Section 13 - Library","/topics/topic01_13.html"));
+		bt.addTopic(new Topic("Section 14 - Benchmarking","/topics/topic01_14.html"));
+		bt.addTopic(new Topic("Section 15 - Exception","/topics/topic01_15.html"));
 		bt.addTopic(new Topic("-- Summary --","/topics/summary01.html"));
 		
-		bt=new BigTopic("Java Programming - 2");
+		bt=new BigTopic("Object Oriented Programming");
 		BigTopicList.add(bt);
-		bt.addTopic(new Topic("Section 1 - Recursion","/topics/topic02_01.html"));
-		bt.addTopic(new Topic("Section 2 - Memoization","/topics/topic02_02.html"));
-		bt.addTopic(new Topic("Section 3 - Benchmarking","/topics/topic02_03.html"));
+		bt.addTopic(new Topic("Section 1 - Why Object?","/topics/topic02_01.html"));
+		bt.addTopic(new Topic("Section 2 - Object Definition","/topics/topic02_02.html"));
+		
+		bt=new BigTopic("Basic Algorithms");
+		BigTopicList.add(bt);
+		bt.addTopic(new Topic("Section 1 - Recursion","/topics/topic03_01.html"));
+		bt.addTopic(new Topic("Section 2 - Memoization","/topics/topic03_02.html"));
 	}
 	
 	public void drawTopicsUI() {

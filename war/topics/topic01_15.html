@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="topics.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+
+	<body>
+		<div class="TitleText">
+			Exception
+		</div>
+		<hr><br>
+		<div class="SubtitleText">
+			14.1 The Error
+		</div>
+		<div class="ContentText">
+			When we try to convert a string with alphabets inside, it will throw an error because it is not possible to do so. When we try to read a file that doesn't exist, the method will throw an error as the file can't be read. The way that Java throws error is by giving exception and you are expected know and handle it.
+			<br><br>
+			Example :
+			<pre><code class="Java">try {
+	Integer.parseInt("abc");
+	System.out.println("Converted to integer, ok.");
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	System.out.println("I'm from finally block");
+}
+			</code></pre>
+			When a method encountered error, the remaining lines of code in the try block will be skipped, and the next code to execute is in catch block. In here, you can know what is the error. For finally block, it will be executed regardless of the execution status (error or no error), after the code in try / catch block is done running.
+			<br><br>
+			For the case above, you shouldn't see "Converted to integer, ok." displayed in console as Integer.parseInt("abc") will throw exception. But if you change it to Integer.parseInt("1"), you will see the message and no error message will be thrown. Both cases will print "I'm from finally block.".
+		</div>
+		<br><hr><br>
+		<div class="SubtitleText">
+			14.2 Methods / Exception Definition
+		</div>
+		<div class="ContentText">
+			Since this is a guide for competitive programming, I wouldn't further discuss on how to create a method that throws exception to outside / create your own exception. 
+			<br><br>
+			If you are interested, visit <a href="https://www.tutorialspoint.com/java/java_exceptions.htm">here</a>.
+		</div>
+		<br><hr><br>
+		<div class="SubtitleText">
+			Exercise
+		</div>
+		<div class="ContentText">
+			Exploit the try-catch block to make a method that checks whether the provided String is a double value or not. For example : "123.3" is a double, "123.a" isn't.
+		</div>
+	</body>
+</html>
