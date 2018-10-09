@@ -1,0 +1,33 @@
+site_name: Java Competitive Programming
+site_description: Java Competitive Programming
+site_url: http://kingkingyyk.asuscomm.com:8000
+
+theme: 
+  name: 'material'
+  palette:
+    primary: 'orange'
+    accent: 'amber'
+  logo:
+    icon: 'import_contacts'
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js
+    - https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js
+    - https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.tilde
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.betterem
+  - markdown.extensions.tables
+  - toc:
+      permalink: true
+
+repo_name: GitHub
+repo_url: https://github.com/kingkingyyk/JavaCP
