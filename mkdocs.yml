@@ -29,5 +29,7 @@ markdown_extensions:
   - toc:
       permalink: true
 
+dev_addr: 0.0.0.0:8000
+
 repo_name: GitHub
 repo_url: https://github.com/kingkingyyk/JavaCP

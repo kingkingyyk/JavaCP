@@ -1,6 +1,7 @@
 #!/bin/bash
 
-mkdocs serve &
+cd ~/JavaCP
+python3 -m mkdocs serve &
 while :
 do
     git pull --quiet || true
